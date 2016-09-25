@@ -46,7 +46,10 @@
 
 					<!-- Table Headings -->
 					<thead>
-						<th>Task</th>
+						<th>Task ID</th>
+						<th>Task Name</th>
+						<th>Created At</th>
+						<th>Updated At</th>
 						<th>&nbsp;</th>
 					</thead>
 
@@ -56,9 +59,22 @@
 						<tr>
 							<!-- Task Name -->
 							<td class="table-text">
+								<div>{{ $task->id }}</div>
+							</td>
+							
+							<td class="table-text">
 								<div>{{ $task->name }}</div>
 							</td>
-
+							
+							<td class="table-text">
+								<div>{{ date('d-m-Y H:i', strtotime($task->created_at)) }}</div>
+							</td>
+							
+							<td class="table-text">
+								<div>{{ date('d-m-Y H:i', strtotime($task->updated_at)) }}</div>
+							</td>
+									
+							<!-- Delete Button -->
 							<td>
 								<!-- TODO: Delete Button -->
 							</td>
