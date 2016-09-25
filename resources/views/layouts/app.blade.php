@@ -2,19 +2,22 @@
 
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <title>Laravel Quickstart - Basic</title>
+	<head>
+		<title>Laravel Quickstart - Basic</title>
 
-        <!-- CSS And JavaScript -->
-    </head>
+		<!-- Latest Bootstrap CSS -->
+		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	</head>
 
-    <body>
-        <div class="container">
-            <nav class="navbar navbar-default">
-                <!-- Navbar Contents -->
-            </nav>
-        </div>
+	<body>
+		<div class="container">
+			@yield('content')
+		</div>
 
-        @yield('content')
-    </body>
+		<!-- jQuery library -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+		<!-- Latest Bootstrap JavaScript -->
+		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	</body>
 </html>
