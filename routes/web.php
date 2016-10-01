@@ -14,6 +14,9 @@
 use App\Task;
 use Illuminate\Http\Request;
 
+/**
+ * Show all task.
+ */
 Route::get('/', function () {
 	$tasks = Task::orderBy('created_at', 'asc')->get();
 
@@ -22,6 +25,9 @@ Route::get('/', function () {
 	]);
 });
 
+/**
+ * Show task in edit page.
+ */
 Route::get('/task/{task}', function (Task $task) {
 	return view('task_edit', [
 		'task' => $task
@@ -29,7 +35,7 @@ Route::get('/task/{task}', function (Task $task) {
 });
 
 /**
- * Add New Task
+ * Add New Task.
  */
 Route::post('/task', function (Request $request) {
 	$validator = Validator::make($request->all(), [
@@ -51,7 +57,7 @@ Route::post('/task', function (Request $request) {
 });
 
 /**
- * Delete Task
+ * Delete Task.
  */
 Route::delete('/task/{task}', function (Task $task) {
 	$task->delete();
