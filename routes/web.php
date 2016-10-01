@@ -22,6 +22,12 @@ Route::get('/', function () {
 	]);
 });
 
+Route::get('/task/{task}', function (Task $task) {
+	return view('task_edit', [
+		'task' => $task
+	]);	
+});
+
 /**
  * Add New Task
  */
