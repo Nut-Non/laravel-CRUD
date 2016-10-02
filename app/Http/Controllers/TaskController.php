@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Validator;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -55,7 +56,7 @@ class TaskController extends Controller{
 			$task->name = $request->name;
 			$task->save();
 
-			return redirect('/');
+			return redirect('/tasks');
     }
 
     /**
@@ -92,7 +93,7 @@ class TaskController extends Controller{
 			$task->name	=	$request->name;
 			$task->save();
 
-			return redirect('/');
+			return redirect('/tasks');
     }
 
     /**
@@ -105,6 +106,6 @@ class TaskController extends Controller{
 			// Delete task.
 			$task->delete();
 
-			return redirect('/');
+			return redirect('/tasks');
     }
 }

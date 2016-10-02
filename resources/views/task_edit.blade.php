@@ -11,7 +11,7 @@
 		
 		@include('common.errors')
 		<!-- New Task Form -->
-		<form action="{{ URL::full() }}" method="POST" class="form-horizontal">
+		<form action='{{ url("tasks/{$task->id}") }}' method="POST" class="form-horizontal">
 			{{ csrf_field() }} 
 			{{ method_field('PUT') }}
 

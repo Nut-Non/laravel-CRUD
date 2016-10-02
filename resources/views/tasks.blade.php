@@ -11,7 +11,7 @@
 		@include('common.errors')
 
 		<!-- New Task Form -->
-		<form action="{{ url('task') }}" method="POST" class="form-horizontal">
+		<form action="{{ url('tasks') }}" method="POST" class="form-horizontal">
 			{{ csrf_field() }}
 
 			<!-- Task Name -->
@@ -61,13 +61,13 @@
 							<!-- Task Name -->
 							<td class="table-text">
 								<div>
-									<a href="{{ url("task/{$task->id}") }}">
+									<a href='{{ url("tasks/{$task->id}/edit") }}'>
 										{{ $task->id }}</a></div>
 							</td>
 							
 							<td class="table-text">
 								<div>
-									<a href="{{ url("task/{$task->id}") }}">
+									<a href='{{ url("tasks/{$task->id}/edit") }}'>
 										{{ $task->name }}</a></div>
 							</td>
 							
@@ -81,7 +81,7 @@
 									
 							<!-- Delete Button -->
 							<td>
-								<form action="{{ url('task/'.$task->id) }}" method="POST">
+								<form action="{{ url('tasks/'.$task->id) }}" method="POST">
 									{{ csrf_field() }}
 									{{ method_field('DELETE') }}
 

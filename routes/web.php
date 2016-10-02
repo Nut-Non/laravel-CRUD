@@ -11,7 +11,4 @@
 |
 */
 
-use App\Task;
-use Illuminate\Http\Request;
-
 Route::resource('tasks', 'TaskController');
