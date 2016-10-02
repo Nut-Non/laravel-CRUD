@@ -57,6 +57,17 @@ Route::post('/task', function (Request $request) {
 });
 
 /**
+ * Edit Task.
+ */
+Route::put('/task/{task}', function (Task $task, Request $request) {
+	// Edit task.
+	$task->name	=	$request->name;
+	$task->save();
+
+	return redirect('/');
+});
+
+/**
  * Delete Task.
  */
 Route::delete('/task/{task}', function (Task $task) {
