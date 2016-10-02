@@ -6,16 +6,22 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
-class TaskController extends Controller
-{
+// Use Task model.
+use App\Task;
+
+class TaskController extends Controller{
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        //
+    public function index() {
+			// Display all tasks.
+			$tasks = Task::orderBy('created_at', 'desc')->get();
+
+			return view('tasks', [
+				'tasks' => $tasks
+			]);
     }
 
     /**
@@ -23,9 +29,8 @@ class TaskController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        //
+    public function create() {
+      // Create form is in index.
     }
 
     /**
@@ -34,9 +39,23 @@ class TaskController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        //
+    public function store(Request $request) {
+			$validator = Validator::make($request->all(), [
+					'name' => 'required|max:255',
+			]);
+
+			if ($validator->fails()) {
+					return redirect('/')
+							->withInput()
+							->withErrors($validator);
+			}
+
+			// Create new task.
+			$task = new Task;
+			$task->name = $request->name;
+			$task->save();
+
+			return redirect('/');
     }
 
     /**
@@ -45,42 +64,47 @@ class TaskController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-        //
+    public function show($id) {
+      //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Task  $task
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
-        //
+    public function edit(Task $task) {
+			return view('task_edit', [
+				'task' => $task
+			]);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+		 * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Task  $task
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-        //
+    public function update(Request $request, Task $task) {
+			// Edit task.
+			$task->name	=	$request->name;
+			$task->save();
+
+			return redirect('/');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Task  $task
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
-        //
+    public function destroy(Task $task) {
+			// Delete task.
+			$task->delete();
+
+			return redirect('/');
     }
 }
