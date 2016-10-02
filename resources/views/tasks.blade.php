@@ -60,11 +60,15 @@
 						<tr>
 							<!-- Task Name -->
 							<td class="table-text">
-								<div>{{ $task->id }}</div>
+								<div>
+									<a href="{{ url("task/{$task->id}") }}">
+										{{ $task->id }}</a></div>
 							</td>
 							
 							<td class="table-text">
-								<div>{{ $task->name }}</div>
+								<div>
+									<a href="{{ url("task/{$task->id}") }}">
+										{{ $task->name }}</a></div>
 							</td>
 							
 							<td class="table-text">
