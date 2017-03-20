@@ -42,11 +42,11 @@ class TaskController extends Controller{
      */
     public function store(Request $request) {
 			$validator = Validator::make($request->all(), [
-					'name' => 'required|max:255',
+					'name' => 'required|max:20',
 			]);
 
 			if ($validator->fails()) {
-					return redirect('/')
+					return redirect('/tasks')
 							->withInput()
 							->withErrors($validator);
 			}

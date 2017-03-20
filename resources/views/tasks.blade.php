@@ -72,11 +72,11 @@
 							</td>
 							
 							<td class="table-text">
-								<div>{{ date('d-m-Y H:i', strtotime($task->created_at)) }}</div>
+								<div>{{ date('d F Y @H:i', strtotime($task->created_at)) }}</div>
 							</td>
 							
 							<td class="table-text">
-								<div>{{ date('d-m-Y H:i', strtotime($task->updated_at)) }}</div>
+								<div>{{ date('d F Y @H:i', strtotime($task->updated_at)) }}</div>
 							</td>
 									
 							<!-- Delete Button -->
